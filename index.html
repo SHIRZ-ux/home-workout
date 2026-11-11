@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>5-Day Home Workout</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#EEF0F6;--card:#FFFFFF;--ink:#161A2E;--soft:#5A6078;--line:#D5D9E6;--ember:#B8561C;--onember:#FFFFFF;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#12162A;--card:#1B2038;--ink:#EAE7DC;--soft:#9AA0B8;--line:#2D3454;--ember:#F0A15A;--onember:#12162A}}
+:root[data-theme="dark"]{--bg:#12162A;--card:#1B2038;--ink:#EAE7DC;--soft:#9AA0B8;--line:#2D3454;--ember:#F0A15A;--onember:#12162A}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:'Barlow',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;font-size:1.05rem;line-height:1.5}
+main{max-width:38rem;margin:0 auto;padding:2.5rem 1.25rem 4rem}
+h1,h2{font-family:'Barlow Condensed','Arial Narrow',Arial,sans-serif;text-transform:uppercase;letter-spacing:.02em;margin:0}
+h1{font-size:clamp(2.6rem,11vw,4rem);line-height:.95}
+h1 span{color:var(--ember)}
+.sub{color:var(--soft);margin:.8rem 0 1.6rem}
+.tabs{display:flex;gap:.4rem;overflow-x:auto;padding-bottom:.4rem;margin-bottom:1rem}
+.tabs button{flex:0 0 auto;font:inherit;font-weight:500;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:.55rem .9rem;border-radius:.6rem;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--ember);color:var(--onember);border-color:var(--ember)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:.9rem;padding:1.3rem 1.2rem}
+.panel[hidden]{display:none}
+.panel h2{font-size:2rem;color:var(--ember);margin-bottom:.2rem}
+.panel .meta{color:var(--soft);margin:0 0 .8rem}
+ul{list-style:none;margin:0;padding:0}
+li{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;border-top:1px solid var(--line)}
+li b{font-weight:500}
+li span{color:var(--soft);white-space:nowrap}
+.rules{margin-top:1.8rem}
+.rules h2{font-size:1.6rem;margin-bottom:.6rem}
+.rules li{display:block}
+.rules li b{color:var(--ember);font-weight:500}
+.end{margin-top:2rem;font-family:'Barlow Condensed',Arial,sans-serif;font-size:1.6rem;font-weight:700;text-transform:uppercase;color:var(--ember)}
+</style>
+</head>
+<body>
+<main>
+<h1>5-Day Home <span>Workout</span></h1>
+<p class="sub">No equipment, just your body and a backpack. About 30 minutes a day. Days 6 and 7 are rest.</p>
+
+<div class="tabs" role="tablist" id="tabs"></div>
+<div id="panels"></div>
+
+<section class="rules">
+<h2>Rules</h2>
+<ul>
+<li><b>Start easy:</b> 2 sets in weeks 1–2, then 3 sets.</li>
+<li><b>Form first:</b> slow and clean beats fast and sloppy.</li>
+<li><b>Backpack:</b> start with a few books, add one every week or two.</li>
+<li><b>Progress:</b> add 1–2 reps a week and write your numbers down.</li>
+<li><b>Stop</b> if a joint hurts. Muscle tiredness is normal, sharp pain is not.</li>
+<li><b>Eat and sleep:</b> 8–9 hours. You’re still growing.</li>
+</ul>
+</section>
+<p class="end">Improving, not proving.</p>
+</main>
+
+<script>
+var days=[
+{t:"Warm-up",m:"5 minutes, before every session, then stretch at the end",x:[["Jumping jacks","20"],["Arm circles","10 each way"],["Slow squats","10"],["Marching in place","30 sec"]]},
+{t:"Day 1 · Push",m:"Chest, shoulders, arms",x:[["Push-ups (knees or wall if needed)","3 × 5–12"],["Pike push-ups","3 × 5–10"],["Backpack overhead press","3 × 10"],["Chair dips","3 × 6–10"],["Plank","3 × 20–40 sec"]]},
+{t:"Day 2 · Legs",m:"Quads, glutes, calves",x:[["Squats","3 × 15"],["Backpack squats (at chest)","3 × 12"],["Lunges","3 × 10 each leg"],["Glute bridges","3 × 15"],["Calf raises","3 × 20"]]},
+{t:"Day 3 · Cardio + Core",m:"Jog or brisk walk, then core",x:[["Jog or brisk walk","20–30 min"],["Mountain climbers","3 × 20 sec"],["Leg raises","3 × 10"],["Dead bug","3 × 10"],["Plank","2 × 30–45 sec"]]},
+{t:"Day 4 · Pull + Back",m:"Back and posture",x:[["Backpack rows","3 × 12"],["Backpack good mornings","3 × 12"],["Superman","3 × 12"],["Reverse snow angels","3 × 12"],["Pull-ups (safe bar only)","3 × max"]]},
+{t:"Day 5 · Full Body",m:"Circuit: do it 3 times, rest 1 minute between rounds",x:[["Squats","10"],["Push-ups","8"],["Lunges (total)","10"],["Backpack rows","10"],["Plank","20 sec"]]}
+];
+var tabs=document.getElementById("tabs"),panels=document.getElementById("panels");
+days.forEach(function(d,i){
+var b=document.createElement("button");b.textContent=i===0?"Warm-up":"Day "+i;b.setAttribute("role","tab");b.setAttribute("aria-selected",i===0?"true":"false");
+var p=document.createElement("div");p.className="panel";p.hidden=i!==0;
+var h="<h2>"+d.t+"</h2><p class=\"meta\">"+d.m+"</p><ul>";
+d.x.forEach(function(e){h+="<li><b>"+e[0]+"</b><span>"+e[1]+"</span></li>"});
+p.innerHTML=h+"</ul>";
+b.onclick=function(){
+Array.prototype.forEach.call(tabs.children,function(c,j){c.setAttribute("aria-selected",j===i?"true":"false");panels.children[j].hidden=j!==i});
+};
+tabs.appendChild(b);panels.appendChild(p);
+});
+</script>
+</body>
+</html>
